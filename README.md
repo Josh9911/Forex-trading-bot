@@ -3,7 +3,7 @@ Hi! 👋  Josh here! 🙋🏽‍♂️
 </h1>
 
 <h1 align="center">
-### Simple Forex Trading Bot 
+Simple Forex Trading Bot 
 ==============================
 
 ## Table of Contents

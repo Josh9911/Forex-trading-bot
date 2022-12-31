@@ -1,0 +1,6 @@
+# Ignore Mac System files
+.ds_store
+
+# Ignore all Pickle Files created 
+*.pkl
+

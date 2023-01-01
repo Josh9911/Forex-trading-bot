@@ -28,14 +28,14 @@ def get_candles_df(json_response):
     for candle in json_response['candles']:
         if candle['complete'] == False:
             continue
-    new_dict = {}
-    new_dict ['time'] = candle['time']
-    new_dict['volume'] = candle['volume']
-    our_data.append(new_dict)
-    for price in prices:
-        for oh in ohlc:
-            new_dict[f"{price}_{oh}"] = candle[price][oh]
-    our_data.append(new_dict)
+        new_dict = {}
+        new_dict ['time'] = candle['time']
+        new_dict['volume'] = candle['volume']
+        our_data.append(new_dict)
+        for price in prices:
+            for oh in ohlc:
+                new_dict[f"{price}_{oh}"] = candle[price][oh]
+        our_data.append(new_dict)
 
     candles_df = pd.DataFrame.from_dict(our_data)
 
@@ -45,7 +45,7 @@ def save_file(candles_df, pair, granularity):
     candles_df.to_pickle(f"candle_data/{pair}_{granularity}.pkl")
 
 def create_data(pair,granularity):
-    code, json_data = fetch_candles(pair, 4000, granularity)
+    code, json_data = fetch_candles(pair, 100, granularity)
     if code != 200:
         print(pair, "Error")
         return

@@ -14,9 +14,10 @@ Simple Forex Trading Bot
     * [Virtual Enviroment and dependencies](#virtual-enviroment-and-dependencies)
         * [For Windows](#For-Windows:)
         * [For Mac OS](#For-Mac-OS:)
-4. [Project Overview](#project-overview)
+4. [Usage](#usage)
+    * [Setting up the API's](#setting-up-the-apis)
     * [Conclusion and Future Work](#conclusion-and-future-work)
-5. [Project Organisation](#project-organisation)
+
 
 ## Abstract
 
@@ -100,20 +101,26 @@ Now that we have everything sorted, we can clone the repository into your local 
 ```console
 git clone https://github.com/Josh9911/Forex-trading-bot.git
 ```
+## Usage
 
+### Setting up the API's
 Firstly, over in the `defs.py` file, do enter in the API token and your account ID that we saved earlier on.
 
+
+##### Changing your own secure information
 ```python
 API_KEY = " < YOUR API KEY> "
-ACCOUNT_ID = "111-111-11111111-111 < YOUR AACOUNT ID >" 
+ACCOUNT_ID = "111-111-11111111-111 < YOUR ACCOUNT ID >" 
 OANDA_URL = "https://api-fxpractice.oanda.com/v3"
 
 SECURE_HEADER = {
     'Authorization': f'Bearer {API_KEY}'
 }
-
 ```
 
+## Conclusion and Future Work
+
+Write conclusion and future work here
 
 
 

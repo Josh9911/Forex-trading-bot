@@ -24,10 +24,6 @@ data = response.json()
 prices = ['mid', 'bid' ,'ask']
 ohlc = ['o', 'h', 'l', 'c']
 
-for price in prices:
-    for oh in ohlc:
-        print(f"{price}_{oh}")
-
 our_data = []
 
 for candle in data['candles']:

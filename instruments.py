@@ -1,32 +1,49 @@
 import requests
 import pandas as pd 
-
+import utils
 import defs 
  
-session = requests.Session()
 
-url = f"{defs.OANDA_URL}/accounts/{defs.ACCOUNT_ID}/instruments"
+class Instrument():
+    def __init__(self,ob):
+        self.name = ob['name']
+        self.ins_type = ob['type']
+        self.displayName = ob['displayName']
+        self.pipLocation = pow(10, ob['pipLocation']) 
+        self.marginRate = ob['marginRate']
+    
+    def __repr__(self):
+        return str(vars(self))
+    
+    @classmethod
+    def get_instruments_df(cls):
+        '''
+        Get the df of the Dataframe of all the instruments
+        '''
+        return pd.read_pickle(utils.get_instruments_data_filename())
 
+    @classmethod
+    def get_instruments_list(cls):
+        '''
+        Create an Instrument Object for all the instruments avaliable
+        '''
+        df = cls.get_instruments_df()
+        return [Instrument(x) for x in df.to_dict(orient = 'records')]
 
-response = session.get(url,params=None, headers = defs.SECURE_HEADER)
+    @classmethod
+    def get_instrument_dict(cls):
+        i_list = cls.get_instruments_list()
+        i_keys = [x.name for x in i_list]
+        return { k:v for (k,v) in zip(i_keys, i_list) }  
 
-data = response.json()
+    @classmethod
+    def get_instrument_by_name(cls,pairname):
+        d = cls.get_instrument_dict()
+        if pairname in d:
+            return d[pairname]
+        else:
+            return None
 
-instruments = data['instruments']
+if __name__ == "__main__":
+    print(Instrument.get_instruments_list())
 
-instrument_data = []
-for item in instruments:
-    new_ob = dict(
-    name = item['name'],
-    type = item['type'],
-    displayName = item['displayName'],
-    pipLocation = item['pipLocation'],
-    marginRate = item['marginRate']
-    )
-    instrument_data.append(new_ob)
-
-instrument_df = pd.DataFrame.from_dict(instrument_data)
-
-print(instrument_df)
-
-instrument_df.to_pickle("instruments.pkl")

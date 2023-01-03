@@ -29,7 +29,7 @@ def evaluate_pair(i_pair, mashort, malong, price_data):
 
     #print(f"{i_pair.name} {mashort} {malong} trades:{df_trades.shape[0]} gain:{df_trades['GAIN'].sum():.0f}")
 
-    return ma_result.MAResult(
+    return moving_average_results.MAResult(
         df_trades=df_trades,
         pairname=i_pair.name,
         params={'mashort' : mashort, 'malong' : malong}

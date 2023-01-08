@@ -28,15 +28,15 @@ In this project, I connect to OANDA's database using their API's to create a dat
 
 I am currently running this on a Macbook Pro 2020 (Intel Chip) with 16GB of Ram.
 
-- Install [Python](#https://www.python.org/)
-- Install your favourite IDE, personally I like to use [Visual Studio Code](#https://code.visualstudio.com/)
+- Install [Python](https://www.python.org/)
+- Install your favourite IDE, personally I like to use [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Getting Started 
  
 ### Oanda
 You will need to create an account with Oanda and to have some basic knowledge in Python. 
 
-Go to [Oanda](#https://www.oanda.com/sg-en/) and create an account. Oanda is a trading platform and is free to sign up, they also have very useful API's which we will be using for data analysis and backtesting
+Go to [Oanda](https://www.oanda.com/sg-en/) and create an account. Oanda is a trading platform and is free to sign up, they also have very useful API's which we will be using for data analysis and backtesting
 
 Please ensure that you are in the `Demo` version of your account. To do so, hover under your name in the OANDA main page and you should be able to switch to `Demo`. By default you should be in `Live` and that is not where we want to be until we have developed a profitable trading strategy.
 

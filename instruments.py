@@ -45,5 +45,5 @@ class Instrument():
             return None
 
 if __name__ == "__main__":
-    print(Instrument.get_instruments_list())
+    print(Instrument.get_instrument_dict())
 

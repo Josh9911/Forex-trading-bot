@@ -1,7 +1,7 @@
 import requests
 import pandas as pd 
 import utils
-import defs 
+import old_files.defs as defs 
  
 
 class Instrument():

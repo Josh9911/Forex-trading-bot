@@ -1,13 +1,17 @@
 #Ignore password sensitive files
 defs.py
+configuration.conf
 
 # Ignore Mac System files
 .ds_store
 
 # Ignore all Pickle Files created 
-*.pkl
+*.csv
+
 
 # Ignore all Jupyter Files
 *.ipynb
 
+# Ignore old files
 candle_data/
+old_files/

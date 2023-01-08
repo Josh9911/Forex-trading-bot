@@ -3,14 +3,13 @@ Hi! 👋  Josh here! 🙋🏽‍♂️
 </h1>
 
 <h1 align="center">
-Simple Forex Trading Bot 
-==============================
+Forex-API-Pipeline
 
 ## Table of Contents
 1. [Abstract](#abstract)
 2. [Requirements](#requirements)
 3. [Getting Started](#getting-started)
-    * [Credentials](#Credentials)
+    * [Oanda](#Oanda)
     * [Virtual Enviroment and dependencies](#virtual-enviroment-and-dependencies)
         * [For Windows](#For-Windows:)
         * [For Mac OS](#For-Mac-OS:)
@@ -21,25 +20,27 @@ Simple Forex Trading Bot
 
 ## Abstract
 
-This project is not so much to make money 💰 (perhaps in the future), but just a simple pet project about how to run your own trading bot, how to make use of RESTful API's and how to do simple data cleaning and data visualisation. I chose the medium of Forex because I think it's a little bit more stable than cryptocurrency and also because Fx might be something that I want to go into the future. 
+This project is not so much to make money 💰 (perhaps in the future), but just a simple pet project motivated by my interest in data engineering. This is for me to develop my skills and experience on the tools of the trade and as such, the project is a little "overkill" as I make use of `Airflow`, `Docker`, `Amazon S3 and Redshift` and data visualisation tools such as `Google Data Studio`. I chose the topic of Forex because I think it's something that someone might want to use and also it might be something that I would to get into the future. 
 
-In this project, I connect to OANDA's database using their API's to create a database of the history of the fx exchange. I then use a very simple strategy, called the Moving Average Crossover. You can read more about it here ( https://howtotrade.com/courses/moving-averages-in-forex/moving-average-crossover/#:~:text=What%20is%20a%20Moving%20Average,Simple%20as%20that!)
+In this project, I connect to OANDA's database using their API's to create a database of the history of the fx exchange.
 
-Basically, the gist is that by calculating two different moving averages, each time the moving averages "crosses" over each other, it's an indicator to buy/sell. While not a foolproof strategy, it is a pretty simple and powerful strategy, perfect for this pet project.
-
-Following that, the bot automatically makes the trade, and sends a telegram message to me. Pretty simple right? Let's get into it!
 
 ## Requirements 
 
+I am currently running this on a Macbook Pro 2020 (Intel Chip) with 16GB of Ram.
+
+- Install Python https://www.python.org/
+- Install your favourite IDE https://code.visualstudio.com/
+
+## Getting Started 
+ 
+### Oanda
 You will need to create an account with Oanda and to have some basic knowledge in Python. 
 
 Go to https://www.oanda.com/sg-en/ and create an account. Oanda is a trading platform and is free to sign up, they also have very useful API's which we will be using for data analysis and backtesting
 
+Please ensure that you are in the `Demo` version of your account. To do so, hover under your name in the OANDA main page and you should be able to switch to `Demo`. By default you should be in `Live` and that is not where we want to be until we have developed a profitable trading strategy.
 
-
-## Getting Started 
-Please ensure that you are in the `Demo` version of your account. To do so, hover under your name in the OANDA main page and you should be able to switch to `Demo`. By default you should be in `Live` and that is not where we want to be until we have developed a profitable trading strategy. 
-### Credentials 
 Certain credentials we need are 
 - Account ID
 - API Key
@@ -51,6 +52,7 @@ Navigate to `Manage Funds` and under "V20 Account Number" you should be able to 
 
 Navigate to the `Manage API Access` button and click on it. In the next page, click on `Generate API Token` and make sure to store the token in a safe place. 
 
+### Amazon Web Services (AWS)
 ## Virtual Enviroment and dependencies
 To run the project, I **highly** recommend you create a virtual environment to self-contain the necessary dependencies required to run the trading bot
 
@@ -120,7 +122,12 @@ SECURE_HEADER = {
 
 ## Conclusion and Future Work
 
-Write conclusion and future work here
+## Future Work
+Using a very simple strategy, called the Moving Average Crossover to automate trades. You can read more about it here ( https://howtotrade.com/courses/moving-averages-in-forex/moving-average-crossover/#:~:text=What%20is%20a%20Moving%20Average,Simple%20as%20that!)
+
+
+Basically, the gist is that by calculating two different moving averages, each time the moving averages "crosses" over each other, it's an indicator to buy/sell. While not a foolproof strategy, it is a pretty simple and powerful strategy, perfect for this pet project.
+
 
 
 

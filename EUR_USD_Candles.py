@@ -42,7 +42,7 @@ candles_df = pd.DataFrame.from_dict(our_data)
 
 print(candles_df)
 
-candles_df.to_pickle("EUR_USD_H1.pkl")
+candles_df.to_csv("EUR_USD_H1.csv")
 
 
 

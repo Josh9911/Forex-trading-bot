@@ -5,11 +5,11 @@ def get_candle_data_filename(pair, granularity):
     '''
     This gets the name of the files for the candle data 
     '''
-    return f"candle_data/{pair}_{granularity}.pkl"
+    return f"candle_data/{pair}_{granularity}.csv"
 
 def get_instruments_data_filename():
     '''
     This gets the 
     '''
-    return "instruments.pkl"
+    return "instruments.csv"
 

@@ -20,7 +20,7 @@ class Instrument():
         '''
         Get the df of the Dataframe of all the instruments
         '''
-        return pd.read_pickle(utils.get_instruments_data_filename())
+        return pd.read_csv(utils.get_instruments_data_filename())
 
     @classmethod
     def get_instruments_list(cls):

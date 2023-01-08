@@ -4,7 +4,7 @@ import pandas as pd
 
 session = requests.Session()
 
-ins_df = pd.read_pickle("instruments.pkl")
+ins_df = pd.read_csv("instruments.csv")
 
 def fetch_candles(pair_name, count, granularity):
     url = f"{defs.OANDA_URL}/instruments/{pair_name}/candles"
@@ -42,7 +42,7 @@ def get_candles_df(json_response):
     return candles_df
 
 def save_file(candles_df, pair, granularity):
-    candles_df.to_pickle(f"candle_data/{pair}_{granularity}.pkl")
+    candles_df.to_csv(f"candle_data/{pair}_{granularity}.csv")
 
 def create_data(pair,granularity):
     code, json_data = fetch_candles(pair, 100, granularity)

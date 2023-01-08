@@ -29,11 +29,11 @@ class OandaAPI():
 
     def save_instruments_df(self):
         '''
-        Saves the dataframe into a pickle file to be used later 
+        Saves the dataframe into a csv file to be used later 
         '''
         df = self.get_instruments_df()
         if df is not None:
-            df.to_pickle(utils.get_instruments_data_filename())
+            df.to_csv(utils.get_instruments_data_filename())
 
 
     def fetch_candles(self, pair_name, count, granularity):

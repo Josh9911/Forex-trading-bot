@@ -10,9 +10,8 @@ Forex-API-Pipeline
 2. [Requirements](#requirements)
 3. [Getting Started](#getting-started)
     * [Oanda](#Oanda)
+    * [Amazon Web Services](#amazon-web-services-aws)
     * [Virtual Enviroment and dependencies](#virtual-enviroment-and-dependencies)
-        * [For Windows](#For-Windows:)
-        * [For Mac OS](#For-Mac-OS:)
 4. [Usage](#usage)
     * [Setting up the API's](#setting-up-the-apis)
     * [Conclusion and Future Work](#conclusion-and-future-work)
@@ -29,15 +28,15 @@ In this project, I connect to OANDA's database using their API's to create a dat
 
 I am currently running this on a Macbook Pro 2020 (Intel Chip) with 16GB of Ram.
 
-- Install Python https://www.python.org/
-- Install your favourite IDE https://code.visualstudio.com/
+- Install [Python](#https://www.python.org/)
+- Install your favourite IDE, personally I like to use [Visual Studio Code](#https://code.visualstudio.com/)
 
 ## Getting Started 
  
 ### Oanda
 You will need to create an account with Oanda and to have some basic knowledge in Python. 
 
-Go to https://www.oanda.com/sg-en/ and create an account. Oanda is a trading platform and is free to sign up, they also have very useful API's which we will be using for data analysis and backtesting
+Go to [Oanda](#https://www.oanda.com/sg-en/) and create an account. Oanda is a trading platform and is free to sign up, they also have very useful API's which we will be using for data analysis and backtesting
 
 Please ensure that you are in the `Demo` version of your account. To do so, hover under your name in the OANDA main page and you should be able to switch to `Demo`. By default you should be in `Live` and that is not where we want to be until we have developed a profitable trading strategy.
 
@@ -53,29 +52,38 @@ Navigate to `Manage Funds` and under "V20 Account Number" you should be able to 
 Navigate to the `Manage API Access` button and click on it. In the next page, click on `Generate API Token` and make sure to store the token in a safe place. 
 
 ### Amazon Web Services (AWS)
+
+We'll be using the cloud to store our Forex data; specifically, Amazon Web Service (AWS) which offers a free tier.
+
+We will be using two of their services:
+
+* [Simple Storage Service (S3)](https://aws.amazon.com/s3/)  ~ This is Object Storage. When we extract data from Oanda, we'll store it in a CSV and push to an S3 Bucket as an object. This allows us to store all our raw data in the cloud.
+
+* [Redshift](https://aws.amazon.com/redshift/) ~ This is a Data Warehousing service. Utilising its Massively Parallel Processing (MPP) technology, Redshift is able to execute operations on large datasets at fast speeds. It's based on PostgreSQL, so we can use SQL to run operations here. It is pretty expensive but we it should be fine for a small project like this.
+
+To get started with AWS, follow the below steps:
+
+#### Setup
+
+1. Setup a personal [AWS account](https://portal.aws.amazon.com/billing/signup?nc2=h_ct&src=header_signup&redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start). Follow instructions [here](https://aws.amazon.com/getting-started/guides/setup-environment/module-one/) and setup with free tier.
+
+2. Secure your account following these [steps](https://aws.amazon.com/getting-started/guides/setup-environment/module-two/). 
+
+    Here we are setting up MFA for the root user. The root is a special account that has access to everything. Therefore it's important we secure this. Also be sure to setup an IAM user which will have its own set of permissions, in this case, admin permissions. Generally in production, you should only use the root account for tasks that can only be done with the root account.
+
+3. Setup CLI following this [guide](https://aws.amazon.com/getting-started/guides/setup-environment/module-three/). 
+
+    This allows us to control AWS services from the command line interface. The goal by the end of this is you should have a folder in your home directory called `.aws` which contains a `credentials` file. It will look something like this:
+
+    ```config
+    [default]
+    aws_access_key_id = XXXX
+    aws_secret_access_key = XXXX
+    ```
+
+    This will allow our scripts to interact with AWS without having to include our access key and secret access key within the scripts.
 ## Virtual Enviroment and dependencies
 To run the project, I **highly** recommend you create a virtual environment to self-contain the necessary dependencies required to run the trading bot
-
-### For Windows:
-##### To create a virtual environment `virtualenv`:
-
-```console
-py -m pip install --user virtualenv
-py -m venv .venv
-```
-
-##### To activate the virtual environment `.venv`:
-
-```console
-.\.venv\Scripts\activate
-
-# check virtual environment activated
- where python
-```
-##### To install the necessary dependencies within `.venv`:
-```console
-py -m pip install --no-cache-dir -r requirements.txt
-```
 
 ### For Mac OS:
 ##### To create a virtual environment `virtualenv`:
